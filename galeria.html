@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ff716c",
+                    "surface-bright": "#2c2c2c",
+                    "surface-variant": "#262626",
+                    "tertiary-dim": "#874cff",
+                    "primary-dim": "#00deec",
+                    "outline-variant": "#484848",
+                    "on-secondary-fixed": "#002593",
+                    "on-secondary": "#001662",
+                    "on-error": "#490006",
+                    "on-secondary-fixed-variant": "#003bd9",
+                    "surface-container-highest": "#262626",
+                    "primary": "#8ff5ff",
+                    "tertiary-fixed-dim": "#b190ff",
+                    "on-primary-container": "#005359",
+                    "inverse-primary": "#006a71",
+                    "on-primary-fixed": "#003f43",
+                    "secondary-fixed": "#c8cfff",
+                    "on-surface-variant": "#ababab",
+                    "error-dim": "#d7383b",
+                    "on-tertiary-fixed": "#1f0052",
+                    "on-tertiary": "#290067",
+                    "primary-fixed-dim": "#00deec",
+                    "on-primary-fixed-variant": "#005e64",
+                    "secondary-dim": "#4065ff",
+                    "outline": "#757575",
+                    "surface-container": "#191919",
+                    "tertiary-container": "#7000ff",
+                    "surface-container-lowest": "#000000",
+                    "secondary": "#8297ff",
+                    "error-container": "#9f0519",
+                    "surface-dim": "#0e0e0e",
+                    "background": "#0e0e0e",
+                    "surface-tint": "#8ff5ff",
+                    "surface-container-high": "#1f1f1f",
+                    "on-surface": "#ffffff",
+                    "inverse-surface": "#f9f9f9",
+                    "inverse-on-surface": "#555555",
+                    "tertiary": "#ac89ff",
+                    "on-tertiary-fixed-variant": "#4700a7",
+                    "on-tertiary-container": "#f8f1ff",
+                    "on-secondary-container": "#f9f6ff",
+                    "secondary-container": "#0046fa",
+                    "surface-container-low": "#131313",
+                    "on-error-container": "#ffa8a3",
+                    "primary-container": "#00eefc",
+                    "on-background": "#ffffff",
+                    "surface": "#0e0e0e",
+                    "secondary-fixed-dim": "#b5c0ff",
+                    "primary-fixed": "#00eefc",
+                    "tertiary-fixed": "#bda1ff",
+                    "on-primary": "#005d63"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Manrope"],
+                    "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(38, 38, 38, 0.4);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(143, 245, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: #8ff5ff;
+            background: rgba(143, 245, 255, 0.05);
+            box-shadow: 0 0 30px rgba(143, 245, 255, 0.1);
+        }
+        .play-glow:hover {
+            box-shadow: 0 0 20px rgba(143, 245, 255, 0.6);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 left-0 z-50 flex justify-between items-center w-full px-8 py-4 bg-black/40 backdrop-blur-xl">
+<a href="index.html" class="text-2xl font-bold tracking-tighter text-cyan-400 drop-shadow-[0_0_8px_rgba(143,245,255,0.4)] font-headline">
+            GAME BOY
+        </a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-space-grotesk tracking-tight text-neutral-500 hover:text-cyan-200 transition-colors" href="index.html">Inicio</a>
+<a class="font-space-grotesk tracking-tight text-cyan-400 border-b-2 border-cyan-400 pb-1 hover:text-cyan-200 transition-colors" href="galeria.html">Jogos</a>
+<a class="font-space-grotesk tracking-tight text-neutral-500 hover:text-cyan-200 transition-colors" href="#">Torneios</a>
+<a class="font-space-grotesk tracking-tight text-neutral-500 hover:text-cyan-200 transition-colors" href="#">Comunidade</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container-high px-4 py-2 border-b border-outline/20">
+<span class="material-symbols-outlined text-on-surface-variant mr-2 text-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs font-headline placeholder-neutral-600 w-48" placeholder="PESQUISAR_ARQUIVO" type="text"/>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-neutral-500 cursor-pointer hover:text-cyan-400 transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-neutral-500 cursor-pointer hover:text-cyan-400 transition-colors" data-icon="settings">settings</span>
+</div>
+<button onclick="window.location.href='login.html'" class="bg-primary hover:bg-primary-container text-on-primary px-6 py-2 font-headline font-bold uppercase text-sm tracking-widest transition-transform duration-150 scale-100 hover:scale-105 active:scale-95">
+                Iniciar
+            </button>
+</div>
+</nav>
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-full w-16 md:w-64 flex flex-col bg-neutral-950 border-r border-neutral-800/30 hidden lg:flex z-40 pt-24">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-highest border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="person">person</span>
+</div>
+<div class="hidden md:block">
+<p class="font-headline uppercase text-xs text-primary font-bold tracking-widest">OPERADOR_01</p>
+<p class="text-[10px] text-neutral-500 tracking-tighter">STATUS: ONLINE</p>
+</div>
+</div>
+</div>
+<nav class="flex-grow">
+<div class="space-y-1">
+<a class="flex items-center gap-4 px-6 py-4 text-neutral-600 hover:bg-neutral-900 hover:text-cyan-300 transition-all duration-200 ease-out font-headline uppercase text-xs tracking-widest" href="index.html">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="hidden md:inline">Painel</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-cyan-400 bg-neutral-900 border-r-4 border-cyan-400 font-headline uppercase text-xs tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="sports_esports">sports_esports</span>
+<span class="hidden md:inline">Biblioteca</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-neutral-600 hover:bg-neutral-900 hover:text-cyan-300 transition-all duration-200 ease-out font-headline uppercase text-xs tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="hidden md:inline">Amigos</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-neutral-600 hover:bg-neutral-900 hover:text-cyan-300 transition-all duration-200 ease-out font-headline uppercase text-xs tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+<span class="hidden md:inline">Conquistas</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-neutral-600 hover:bg-neutral-900 hover:text-cyan-300 transition-all duration-200 ease-out font-headline uppercase text-xs tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="hidden md:inline">Carteira</span>
+</a>
+</div>
+</nav>
+<div class="p-4 border-t border-neutral-900">
+<a class="flex items-center gap-4 px-4 py-3 text-neutral-600 hover:text-white font-headline uppercase text-[10px] tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help_center">help_center</span>
+<span class="hidden md:inline">Suporte</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-neutral-600 hover:text-error font-headline uppercase text-[10px] tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+<span class="hidden md:inline">Sair</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-32 px-8 pb-20 min-h-screen">
+<!-- Hero Header Area -->
+<header class="mb-16 max-w-7xl">
+<h1 class="font-headline text-6xl md:text-8xl font-bold tracking-tighter mb-4 text-white uppercase" style="text-shadow: 0 0 20px rgba(143, 245, 255, 0.2);">
+                O ARQUIVO<br/>CINÉTICO
+            </h1>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<p class="font-body text-on-surface-variant max-w-xl text-lg leading-relaxed">
+                    A precisão cirúrgica encontra a nostalgia digital. Navegue pela coleção curada de módulos lógicos de alta fidelidade e simulações reativas.
+                </p>
+<div class="flex space-x-4">
+<div class="bg-surface-container-low px-4 py-2 flex items-center">
+<span class="material-symbols-outlined text-primary text-sm mr-2" data-icon="filter_list">filter_list</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">FILTRAR: TODOS OS MÓDULOS</span>
+</div>
+<div class="bg-surface-container-low px-4 py-2 flex items-center">
+<span class="material-symbols-outlined text-primary text-sm mr-2" data-icon="sort">sort</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">ORDENAR: FREQUÊNCIA</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Game Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl">
+<!-- Card 1: SUDOKU -->
+<div class="group relative glass-card p-6 flex flex-col h-[480px]">
+<div class="absolute top-4 right-4 bg-surface-container-high px-2 py-1">
+<span class="font-label text-[10px] text-primary">ID: 001_LOGIC</span>
+</div>
+<div class="flex-grow flex items-center justify-center mb-6 relative">
+<div class="w-48 h-48 border border-primary/20 rotate-45 flex items-center justify-center group-hover:rotate-0 transition-transform duration-500">
+<span class="material-symbols-outlined text-6xl text-primary/40 group-hover:text-primary transition-colors" data-icon="grid_on">grid_on</span>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay grayscale group-hover:opacity-40 transition-opacity" data-alt="Abstract geometric grid patterns on dark background with sharp neon lines and blue accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkUIRiuSlEBRnUyuFMI-WGOraoSbHk5FkfilB5qv1bWT6cMNxolzbWJQGURgQsBJ5acXGPGuXaQXAfqr2m0_k2vrOsMNalu1mO9Xgw1icqUmx44HRYU-FfMudePndofXrP_Ecmd1oadwgXO_kzknGalDcartUTk12vCGHqsIfVvzJnA2w42v7B5ZVOpXl-2WGaCphhUR5dSKnnVMgQ3qkChg9NViJ0qsfKWlGaZy5KlwdKGzFHoIne9bmKnbNoHKogAkjvJhWIl_T5"/>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-bold mb-2 text-white">SUDOKU_CORE</h3>
+<p class="font-body text-sm text-on-surface-variant mb-6 h-10 overflow-hidden">Matriz de lógica numérica otimizada para foco profundo e resolução de problemas estruturais.</p>
+<button class="w-full bg-transparent border border-primary/30 text-primary py-3 font-label font-bold uppercase tracking-widest text-xs play-glow group-hover:bg-primary group-hover:text-black transition-all">
+                        INICIAR MATRIZ
+                    </button>
+</div>
+</div>
+<!-- Card 2: SNAKE -->
+<div class="group relative glass-card p-6 flex flex-col h-[480px]">
+<div class="absolute top-4 right-4 bg-surface-container-high px-2 py-1">
+<span class="font-label text-[10px] text-secondary">ID: 002_KINETIC</span>
+</div>
+<div class="flex-grow flex items-center justify-center mb-6 relative">
+<div class="w-56 h-2 bg-gradient-to-r from-secondary to-transparent group-hover:h-32 transition-all duration-500 overflow-hidden">
+<span class="material-symbols-outlined text-6xl text-secondary block p-8 opacity-0 group-hover:opacity-100 transition-opacity" data-icon="polyline">polyline</span>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay grayscale group-hover:opacity-40 transition-opacity" data-alt="Abstract wavy glowing lines in dark deep water with blue and violet illumination" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVl7Bunsh-i5QC3hk6XEkw6grDzg36dQ80iOSCGpszFCzQJ17-EBoR1e3Tsdpk8_bPn-u5A6LxI8mSjrmTZA9aA9wWgFlOAYpH062BZ-OEIaOE7foryUpBc7J_cT02p8ZjQgwODSXWZGM4o-UKpcbUU2KPrdbHeXzzIb5p1J74hXgumNyn6TlLNZawqvsLb81X6y2TtEpxcVuBBx6rFPCHuogRtOiC1f0n5alUveZJxXbFlPAxG6Zjei7I7dbyPwBcDjcSXa2oVZfe"/>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-bold mb-2 text-white">NEURAL_WORM</h3>
+<p class="font-body text-sm text-on-surface-variant mb-6 h-10 overflow-hidden">Navegação espacial de alta velocidade. Colete nós de dados enquanto evita colisões estruturais.</p>
+<button class="w-full bg-transparent border border-secondary/30 text-secondary py-3 font-label font-bold uppercase tracking-widest text-xs group-hover:bg-secondary group-hover:text-black transition-all">
+                        INICIAR TRANSMISSÃO
+                    </button>
+</div>
+</div>
+<!-- Card 3: TETRIS -->
+<div class="group relative glass-card p-6 flex flex-col h-[480px]">
+<div class="absolute top-4 right-4 bg-surface-container-high px-2 py-1">
+<span class="font-label text-[10px] text-tertiary">ID: 003_SPATIAL</span>
+</div>
+<div class="flex-grow flex items-center justify-center mb-6 relative">
+<div class="grid grid-cols-2 gap-2 group-hover:gap-6 transition-all duration-500">
+<div class="w-12 h-12 bg-tertiary/20 border border-tertiary/50"></div>
+<div class="w-12 h-12 bg-tertiary/20 border border-tertiary/50"></div>
+<div class="w-12 h-12 bg-tertiary/20 border border-tertiary/50"></div>
+<div class="w-12 h-12 bg-tertiary/40 border border-tertiary"></div>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay grayscale group-hover:opacity-40 transition-opacity" data-alt="Stacking semi-transparent crystal blocks with violet neon glow on a dark void background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2t-A_KRjuXj5aWhOeEdyubCPDmK3Bv5vYxoWvCHCffkCeuHyf3Z9iAW6wIS8iamkbpXnmtgFX0CX2UYAah4gMQ79Kj_xZ2281rtP3Fd_EZDK-JATsBmFlRajL7BO500_ZQ99aVkiXVsipv5kDb5wxP8QnPPgriposTmL8AO_Tydfnlb0lsJJLGp5X-O_aNenir47Tb-M1h6ijBAosIwKStHmZd7o7c29cWjNtpoytNLEYBNuNJpuaZi1Ru57ifUc5wlBkGm9n1odV"/>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-bold mb-2 text-white">BLOCK_COLLAPSE</h3>
+<p class="font-body text-sm text-on-surface-variant mb-6 h-10 overflow-hidden">Protocolos de alinhamento geométrico. Limpe camadas horizontais para manter a estabilidade do buffer.</p>
+<button class="w-full bg-transparent border border-tertiary/30 text-tertiary py-3 font-label font-bold uppercase tracking-widest text-xs group-hover:bg-tertiary group-hover:text-black transition-all">
+                        COMEÇAR ORDENAÇÃO
+                    </button>
+</div>
+</div>
+<!-- Card 4: Pong -->
+<div class="group relative glass-card p-6 flex flex-col h-[480px]">
+<div class="absolute top-4 right-4 bg-surface-container-high px-2 py-1">
+<span class="font-label text-[10px] text-primary">ID: 004_REFLEX</span>
+</div>
+<div class="flex-grow flex items-center justify-center mb-6 relative">
+<div class="flex flex-col items-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl text-primary" data-icon="compare_arrows">compare_arrows</span>
+<div class="w-2 h-2 bg-primary mt-4 group-hover:translate-y-12 transition-transform"></div>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay grayscale group-hover:opacity-40 transition-opacity" data-alt="Blurred tech background with glowing blue nodes and network connections in dark space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNoEvGM-DSVGk0-15cUzEbHF_fgwWGN1-xo_43YLPcDVNT2vQCBTUNw1prNDQiAG7PGqb5usMG0lsP4LUuYmP-f6jfxwy4subyQXAWGt96vZUtDY3I1lKZscmH-y1WJJNQdGnp1wMPus89U9EpYRa0JYuLk-WJSfj4zo_bAdyZfJUMLloKCa7_D4mgmEPnTH-WEF10KLXyqlLt6SINY3usB96FJDyMESvvAZTKHbuEXLh-6l5UfUyOko78O5hxQFL3QhPqQUkvyNEH"/>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-bold mb-2 text-white">OSCILLATE_PRO</h3>
+<p class="font-body text-sm text-on-surface-variant mb-6 h-10 overflow-hidden">Física binária de super velocidade. Paleta defensiva em uma câmara de alto vácuo.</p>
+<button class="w-full bg-transparent border border-primary/30 text-primary py-3 font-label font-bold uppercase tracking-widest text-xs play-glow group-hover:bg-primary group-hover:text-black transition-all">
+                        SINCRONIZAR REBATEDOR
+                    </button>
+</div>
+</div>
+<!-- Card 5: Minesweeper -->
+<div class="group relative glass-card p-6 flex flex-col h-[480px]">
+<div class="absolute top-4 right-4 bg-surface-container-high px-2 py-1">
+<span class="font-label text-[10px] text-error">ID: 005_TACTICAL</span>
+</div>
+<div class="flex-grow flex items-center justify-center mb-6 relative">
+<div class="relative w-24 h-24 flex items-center justify-center border border-error/20 group-hover:border-error group-hover:bg-error/10 transition-all duration-300">
+<span class="material-symbols-outlined text-4xl text-error" data-icon="warning">warning</span>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-overlay grayscale group-hover:opacity-30 transition-opacity" data-alt="Satellite imagery of a planet with high-tech data overlays and scanned regions in dark red and black tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUcWp0yeUN8aFi5LkbtJaV_OFvsUCKGiWdiV-kSHOKQJy_NdLFs2cvwl3q5_M_g2I3brop2K6W8htSTcT2TL_1K28_sFmCV-I-La0zBE2pK4mVv2WmuMs9y1sKNunJng_XNSRq7Gez2sEqeHXq62hc3jcFSG2I28b7SaLTmrRjnv2_VnkuOGB7wDtfDTerpupZu5OAhnnJ-1OBDHmcBUs64YGL32NHHD3EpAjGHgJTumLA3PmnhdbqFzDvtujaqlcsk07CBEQf2Uea"/>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-bold mb-2 text-white">MINE_SWEEP_X</h3>
+<p class="font-body text-sm text-on-surface-variant mb-6 h-10 overflow-hidden">Descriptografia tática de campo minado. Identifique setores de alto risco usando triangulação avançada.</p>
+<button class="w-full bg-transparent border border-error/30 text-error py-3 font-label font-bold uppercase tracking-widest text-xs group-hover:bg-error group-hover:text-black transition-all">
+                        LIMPAR SETOR
+                    </button>
+</div>
+</div>
+<!-- Card 6: Breakout -->
+<div class="group relative glass-card p-6 flex flex-col h-[480px]">
+<div class="absolute top-4 right-4 bg-surface-container-high px-2 py-1">
+<span class="font-label text-[10px] text-secondary">ID: 006_FORCE</span>
+</div>
+<div class="flex-grow flex items-center justify-center mb-6 relative">
+<div class="space-y-1">
+<div class="flex space-x-1">
+<div class="w-8 h-3 bg-secondary/30"></div>
+<div class="w-8 h-3 bg-secondary/60"></div>
+<div class="w-8 h-3 bg-secondary/30"></div>
+</div>
+<div class="flex space-x-1 translate-x-2">
+<div class="w-8 h-3 bg-secondary/60"></div>
+<div class="w-8 h-3 bg-secondary/30"></div>
+</div>
+<div class="w-2 h-2 bg-white rounded-full mx-auto mt-8 group-hover:-translate-y-12 transition-transform duration-700"></div>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay grayscale group-hover:opacity-40 transition-opacity" data-alt="Abstract composition of broken shards and glowing fragments floating in dark space with atmospheric blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXzBbl85F2x7fGa1YS2iF3kc9YCBdQ0nU5ajz1o2wMRsdR7lbzcvVnM3VVieKE_G0euSStAztrgoDlRVARXUFgdvS3z7QzyXEpSW0bLZhTGM0eQ7CS63ec2r8ptdI9hoilR1UlBsMmE7BUoeD5uiv1qSSdkA3ia3dPe0GS_WJxUU6CwirTWwE_-wgdA0NGTQq5sXgpeUkmhxih0UlvdO0Zwpvvl09RdTtSYOpW9iSHmdJwOZ3JvWz1LmyXTd9FJaHpoiZCVOcR5b0b"/>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-bold mb-2 text-white">ORB_SHATTER</h3>
+<p class="font-body text-sm text-on-surface-variant mb-6 h-10 overflow-hidden">Protocolo de demolição. Use o orb cinético para desmantelar estruturas de superfície.</p>
+<button class="w-full bg-transparent border border-secondary/30 text-secondary py-3 font-label font-bold uppercase tracking-widest text-xs group-hover:bg-secondary group-hover:text-black transition-all">
+                        DETONAR ORB
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Section -->
+<footer class="xl:ml-64 w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center bg-black border-t border-neutral-900 font-manrope text-xs tracking-widest text-neutral-700">
+<div class="mb-8 md:mb-0">
+<span class="text-cyan-400 font-bold">NEON-GLASS PROTOCOL</span>
+<p class="mt-2">© 2024 NEON-GLASS PROTOCOL. TODOS OS DIREITOS RESERVADOS.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="hover:text-white transition-colors" href="#">Termos de Serviço</a>
+<a class="hover:text-white transition-colors" href="#">Política de Privacidade</a>
+<a class="hover:text-white transition-colors" href="#">Segurança</a>
+<a class="hover:text-white transition-colors" href="#">API</a>
+<a class="hover:text-white transition-colors" href="#">Status</a>
+</div>
+<div class="mt-8 md:mt-0 flex space-x-6 text-cyan-400 opacity-80">
+<span class="material-symbols-outlined cursor-pointer hover:opacity-100" data-icon="language">language</span>
+<span class="material-symbols-outlined cursor-pointer hover:opacity-100" data-icon="terminal">terminal</span>
+</div>
+</footer>
+<!-- FAB Action (Contextual: Add New Module) -->
+<button class="fixed bottom-12 right-12 w-16 h-16 bg-primary-container text-on-primary-container flex items-center justify-center shadow-[0_0_40px_rgba(143,245,255,0.3)] active:scale-95 transition-transform z-50">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+</body></html>

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GAME BOY | CRIAR IDENTIDADE</title>
+<meta name="description" content="Crie sua identidade no Arquivo Cinético GAME BOY — registre-se para acessar a próxima geração de jogos competitivos e descoberta digital."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "error": "#ff716c",
+                    "surface-bright": "#2c2c2c",
+                    "surface-variant": "#262626",
+                    "tertiary-dim": "#874cff",
+                    "primary-dim": "#00deec",
+                    "outline-variant": "#484848",
+                    "on-secondary-fixed": "#002593",
+                    "on-secondary": "#001662",
+                    "on-error": "#490006",
+                    "on-secondary-fixed-variant": "#003bd9",
+                    "surface-container-highest": "#262626",
+                    "primary": "#8ff5ff",
+                    "tertiary-fixed-dim": "#b190ff",
+                    "on-primary-container": "#005359",
+                    "inverse-primary": "#006a71",
+                    "on-primary-fixed": "#003f43",
+                    "secondary-fixed": "#c8cfff",
+                    "on-surface-variant": "#ababab",
+                    "error-dim": "#d7383b",
+                    "on-tertiary-fixed": "#1f0052",
+                    "on-tertiary": "#290067",
+                    "primary-fixed-dim": "#00deec",
+                    "on-primary-fixed-variant": "#005e64",
+                    "secondary-dim": "#4065ff",
+                    "outline": "#757575",
+                    "surface-container": "#191919",
+                    "tertiary-container": "#7000ff",
+                    "surface-container-lowest": "#000000",
+                    "secondary": "#8297ff",
+                    "error-container": "#9f0519",
+                    "surface-dim": "#0e0e0e",
+                    "background": "#0e0e0e",
+                    "surface-tint": "#8ff5ff",
+                    "surface-container-high": "#1f1f1f",
+                    "on-surface": "#ffffff",
+                    "inverse-surface": "#f9f9f9",
+                    "inverse-on-surface": "#555555",
+                    "tertiary": "#ac89ff",
+                    "on-tertiary-fixed-variant": "#4700a7",
+                    "on-tertiary-container": "#f8f1ff",
+                    "on-secondary-container": "#f9f6ff",
+                    "secondary-container": "#0046fa",
+                    "surface-container-low": "#131313",
+                    "on-error-container": "#ffa8a3",
+                    "primary-container": "#00eefc",
+                    "on-background": "#ffffff",
+                    "surface": "#0e0e0e",
+                    "secondary-fixed-dim": "#b5c0ff",
+                    "primary-fixed": "#00eefc",
+                    "tertiary-fixed": "#bda1ff",
+                    "on-primary": "#005d63"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+                },
+                "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Manrope"],
+                    "label": ["Space Grotesk"]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    body {
+        background-color: #000000;
+        color: #ffffff;
+        font-family: 'Manrope', sans-serif;
+        overflow-x: hidden;
+    }
+    .font-space-grotesk { font-family: 'Space Grotesk', sans-serif; }
+    .font-manrope { font-family: 'Manrope', sans-serif; }
+    
+    .neon-glow-primary {
+        text-shadow: 0 0 10px rgba(143, 245, 255, 0.4);
+    }
+    
+    .glass-panel {
+        background: rgba(31, 31, 31, 0.4);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+    }
+
+    .kinetic-border {
+        position: relative;
+        background: #131313;
+    }
+
+    .kinetic-border::after {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background: linear-gradient(135deg, #8ff5ff 0%, #00eefc 100%);
+        z-index: -1;
+        opacity: 0.3;
+        transition: opacity 0.3s, box-shadow 0.3s;
+    }
+
+    .kinetic-border:focus-within::after {
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(143, 245, 255, 0.5);
+    }
+
+    .kinetic-border.error-state::after {
+        background: linear-gradient(135deg, #ff716c 0%, #d7383b 100%);
+        opacity: 0.8;
+    }
+
+    .kinetic-border.success-state::after {
+        background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+        opacity: 0.6;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #0e0e0e;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #262626;
+    }
+
+    /* Password strength bar animation */
+    .strength-bar {
+        transition: width 0.4s ease, background-color 0.4s ease;
+    }
+
+    /* Step indicator pulse */
+    .step-active {
+        animation: stepPulse 2s ease-in-out infinite;
+    }
+    @keyframes stepPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+    }
+
+    /* Fade-in animation for sections */
+    .fade-in {
+        animation: fadeIn 0.5s ease forwards;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Toggle password visibility button */
+    .toggle-pw {
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+    .toggle-pw:hover {
+        color: #8ff5ff;
+    }
+</style>
+</head>
+<body class="bg-surface-container-lowest min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="bg-black/40 backdrop-blur-xl flex justify-between items-center w-full px-8 py-6 z-50">
+<a href="index.html" class="text-2xl font-bold tracking-tighter text-cyan-400 drop-shadow-[0_0_8px_rgba(143,245,255,0.4)] font-space-grotesk">
+    GAME BOY
+</a>
+<div class="flex items-center gap-8">
+<span class="font-space-grotesk uppercase text-[10px] tracking-[0.2em] text-neutral-500">Status do Sistema: Estável</span>
+<div class="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_8px_#8ff5ff]"></div>
+</div>
+</header>
+<main class="flex-grow flex items-start justify-center relative px-6 py-12">
+<!-- Abstract Background Element -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[1228px] opacity-10 pointer-events-none">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent"></div>
+</div>
+<div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch z-10">
+<!-- Left Side: Aesthetic/Identity -->
+<div class="hidden lg:flex lg:col-span-5 flex-col justify-between p-12 bg-surface-container-low">
+<div>
+<h1 class="font-headline text-6xl font-bold tracking-tighter text-white leading-none mb-6 neon-glow-primary uppercase">
+    Criar<br/>Identidade.
+</h1>
+<div class="h-1 w-24 bg-gradient-to-r from-primary to-transparent mb-10"></div>
+<p class="font-body text-neutral-400 max-w-sm text-lg leading-relaxed mb-10">
+    Registre-se no Arquivo Cinético. Sua identidade digital é a chave para a próxima geração de jogos competitivos e descoberta digital.
+</p>
+</div>
+
+<!-- Progress Steps -->
+<div class="space-y-6" id="progress-steps">
+<div class="flex items-center gap-4" id="step-1-indicator">
+    <div class="w-8 h-8 flex items-center justify-center border border-primary text-primary font-headline text-xs font-bold step-active" id="step-1-dot">01</div>
+    <div>
+        <span class="font-label text-[10px] tracking-widest text-primary uppercase block">Dados de Identificação</span>
+        <span class="font-body text-[10px] text-neutral-600 uppercase tracking-wider">Credenciais obrigatórias</span>
+    </div>
+</div>
+<div class="flex items-center gap-4" id="step-2-indicator">
+    <div class="w-8 h-8 flex items-center justify-center border border-neutral-800 text-neutral-700 font-headline text-xs font-bold" id="step-2-dot">02</div>
+    <div>
+        <span class="font-label text-[10px] tracking-widest text-neutral-700 uppercase block">Dados de Perfil</span>
+        <span class="font-body text-[10px] text-neutral-800 uppercase tracking-wider">Informações opcionais</span>
+    </div>
+</div>
+<div class="w-8 h-[1px] bg-neutral-800 ml-4"></div>
+<div class="flex items-center gap-4 group">
+    <div class="w-8 h-[1px] bg-neutral-800 group-hover:w-12 transition-all"></div>
+    <span class="font-label text-[10px] tracking-widest text-neutral-600 uppercase">Protocolo de Registro V.2.1</span>
+</div>
+</div>
+</div>
+
+<!-- Right Side: Registration Form -->
+<div class="lg:col-span-7 bg-black p-8 lg:p-12 flex flex-col justify-start relative">
+<!-- Tab Toggle -->
+<div class="flex gap-8 mb-10 border-b border-neutral-900">
+<a href="login.html" class="pb-4 font-headline text-sm font-bold tracking-widest text-neutral-700 hover:text-neutral-400 transition-colors uppercase">
+    Entrar
+</a>
+<button class="pb-4 font-headline text-sm font-bold tracking-widest text-primary border-b-2 border-primary uppercase">
+    Criar Identidade
+</button>
+</div>
+
+<!-- Form Content -->
+<form id="register-form" class="space-y-6" novalidate>
+
+<!-- Section 1: Identification Data -->
+<div class="fade-in">
+<div class="flex items-center gap-3 mb-6">
+    <div class="w-6 h-[1px] bg-primary"></div>
+    <span class="font-label text-[10px] tracking-[0.3em] text-primary uppercase">01 // Dados de Identificação</span>
+</div>
+
+<!-- Nome Completo -->
+<div class="space-y-6">
+<div>
+    <label for="fullname" class="font-label text-[10px] tracking-[0.2em] text-neutral-500 uppercase block mb-3">Nome Completo <span class="text-error">*</span></label>
+    <div class="kinetic-border" id="fullname-border">
+        <input id="fullname" class="w-full bg-transparent border-none py-4 px-4 text-white font-manrope placeholder:text-neutral-700" placeholder="SEU NOME COMPLETO" type="text" required autocomplete="name"/>
+    </div>
+    <p id="fullname-error" class="font-label text-[9px] tracking-widest text-error mt-2 hidden uppercase">Nome é obrigatório</p>
+</div>
+
+<!-- E-mail -->
+<div>
+    <label for="email" class="font-label text-[10px] tracking-[0.2em] text-neutral-500 uppercase block mb-3">E-mail <span class="text-error">*</span></label>
+    <div class="kinetic-border" id="email-border">
+        <input id="email" class="w-full bg-transparent border-none py-4 px-4 text-white font-manrope placeholder:text-neutral-700" placeholder="OPERADOR@DOMINIO.COM" type="email" required autocomplete="email"/>
+    </div>
+    <p id="email-error" class="font-label text-[9px] tracking-widest text-error mt-2 hidden uppercase">E-mail inválido</p>
+</div>
+
+<!-- Senha -->
+<div>
+    <label for="password" class="font-label text-[10px] tracking-[0.2em] text-neutral-500 uppercase block mb-3">Cifra de Segurança <span class="text-error">*</span></label>
+    <div class="kinetic-border flex items-center" id="password-border">
+        <input id="password" class="w-full bg-transparent border-none py-4 px-4 text-white font-manrope placeholder:text-neutral-700 flex-1" placeholder="MÍNIMO 8 CARACTERES" type="password" required minlength="8" autocomplete="new-password"/>
+        <button type="button" class="toggle-pw px-4 text-neutral-600" onclick="togglePassword('password', this)" aria-label="Mostrar senha">
+            <span class="material-symbols-outlined text-lg">visibility</span>
+        </button>
+    </div>
+    <!-- Password Strength Indicator -->
+    <div class="mt-3 space-y-2">
+        <div class="w-full h-[2px] bg-neutral-900 overflow-hidden">
+            <div id="password-strength-bar" class="strength-bar h-full" style="width: 0%; background-color: #757575;"></div>
+        </div>
+        <div class="flex justify-between items-center">
+            <p id="password-strength-text" class="font-label text-[9px] tracking-widest text-neutral-700 uppercase">Força da cifra</p>
+            <p id="password-error" class="font-label text-[9px] tracking-widest text-error hidden uppercase">Mínimo 8 caracteres</p>
+        </div>
+    </div>
+</div>
+
+<!-- Confirmação de Senha -->
+<div>
+    <label for="password-confirm" class="font-label text-[10px] tracking-[0.2em] text-neutral-500 uppercase block mb-3">Confirmar Cifra <span class="text-error">*</span></label>
+    <div class="kinetic-border flex items-center" id="password-confirm-border">
+        <input id="password-confirm" class="w-full bg-transparent border-none py-4 px-4 text-white font-manrope placeholder:text-neutral-700 flex-1" placeholder="REPITA A CIFRA" type="password" required autocomplete="new-password"/>
+        <button type="button" class="toggle-pw px-4 text-neutral-600" onclick="togglePassword('password-confirm', this)" aria-label="Mostrar confirmação de senha">
+            <span class="material-symbols-outlined text-lg">visibility</span>
+        </button>
+    </div>
+    <p id="password-confirm-error" class="font-label text-[9px] tracking-widest text-error mt-2 hidden uppercase">As cifras não são idênticas</p>
+</div>
+</div>
+</div>
+
+<!-- Divider -->
+<div class="relative py-4 flex items-center">
+<div class="flex-grow border-t border-neutral-900"></div>
+<span class="flex-shrink mx-4 font-label text-[9px] text-neutral-700 tracking-tighter uppercase">Camada de Perfil</span>
+<div class="flex-grow border-t border-neutral-900"></div>
+</div>
+
+<!-- Section 2: Profile Data -->
+<div class="fade-in" style="animation-delay: 0.15s;">
+<div class="flex items-center gap-3 mb-6">
+    <div class="w-6 h-[1px] bg-secondary"></div>
+    <span class="font-label text-[10px] tracking-[0.3em] text-secondary uppercase">02 // Dados de Perfil</span>
+</div>
+
+<div class="space-y-6">
+<!-- Nome de Usuário -->
+<div>
+    <label for="username" class="font-label text-[10px] tracking-[0.2em] text-neutral-500 uppercase block mb-3">Nome de Usuário <span class="text-neutral-700 text-[8px]">(OPCIONAL)</span></label>
+    <div class="kinetic-border flex items-center" id="username-border">
+        <span class="pl-4 font-manrope text-neutral-600 select-none">@</span>
+        <input id="username" class="w-full bg-transparent border-none py-4 px-2 text-white font-manrope placeholder:text-neutral-700" placeholder="SEU_USERNAME" type="text" autocomplete="username"/>
+    </div>
+    <p class="font-label text-[9px] tracking-widest text-neutral-700 mt-2 uppercase">Identificador público no sistema</p>
+</div>
+
+<!-- Telefone/WhatsApp -->
+<div>
+    <label for="phone" class="font-label text-[10px] tracking-[0.2em] text-neutral-500 uppercase block mb-3">Telefone / WhatsApp <span class="text-neutral-700 text-[8px]">(OPCIONAL)</span></label>
+    <div class="kinetic-border flex items-center" id="phone-border">
+        <span class="pl-4 font-manrope text-neutral-600 select-none text-sm">+55</span>
+        <input id="phone" class="w-full bg-transparent border-none py-4 px-2 text-white font-manrope placeholder:text-neutral-700" placeholder="(00) 00000-0000" type="tel" autocomplete="tel"/>
+    </div>
+    <p class="font-label text-[9px] tracking-widest text-neutral-700 mt-2 uppercase">Para notificações de sistema</p>
+</div>
+</div>
+</div>
+
+<!-- Terms -->
+<div class="flex items-start gap-3 py-4">
+<input class="w-4 h-4 bg-neutral-900 border-neutral-800 text-primary focus:ring-0 rounded-none mt-0.5" id="terms" type="checkbox"/>
+<label class="font-label text-[10px] tracking-widest text-neutral-400 uppercase cursor-pointer leading-relaxed" for="terms">
+    Declaro que li e aceito os <a href="#" class="text-primary/70 hover:text-primary transition-colors">Termos de Serviço</a> e a <a href="#" class="text-primary/70 hover:text-primary transition-colors">Política de Privacidade</a> do Protocolo Neon-Glass.
+</label>
+</div>
+<p id="terms-error" class="font-label text-[9px] tracking-widest text-error hidden uppercase -mt-2">Aceite os termos para continuar</p>
+
+<!-- Submit -->
+<div class="pt-2 space-y-4">
+<button id="submit-btn" type="submit" class="w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold tracking-widest uppercase text-sm hover:brightness-110 transition-all shadow-[0_0_20px_rgba(143,245,255,0.2)] disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center gap-3">
+    <span>Registrar Identidade</span>
+    <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+
+<div class="text-center pt-2">
+    <span class="font-label text-[10px] tracking-widest text-neutral-700 uppercase">Já possui identidade? </span>
+    <a href="login.html" class="font-label text-[10px] tracking-widest text-primary/70 hover:text-primary transition-colors uppercase">Iniciar Conexão</a>
+</div>
+</div>
+</form>
+
+<!-- Footer Meta -->
+<div class="mt-12 pt-8 border-t border-neutral-950 flex flex-col gap-2">
+<p class="font-label text-[9px] tracking-widest text-neutral-600 uppercase">Aviso: Dados criptografados com protocolo AES-256.</p>
+<p class="font-label text-[9px] tracking-widest text-neutral-600 uppercase">Registro: Sector_04 / Neon_Registry_Node</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Shared Footer -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center bg-black border-t border-neutral-900">
+<div class="text-cyan-400 font-bold font-manrope text-xs tracking-widest mb-6 md:mb-0 uppercase">
+    © 2024 PROTOCOLO NEON-GLASS. TODOS OS DIREITOS RESERVADOS.
+</div>
+<div class="flex gap-8">
+<a class="font-manrope text-xs tracking-widest text-neutral-700 hover:text-white transition-opacity opacity-80 hover:opacity-100 uppercase" href="#">Termos de Serviço</a>
+<a class="font-manrope text-xs tracking-widest text-neutral-700 hover:text-white transition-opacity opacity-80 hover:opacity-100 uppercase" href="#">Política de Privacidade</a>
+<a class="font-manrope text-xs tracking-widest text-neutral-700 hover:text-white transition-opacity opacity-80 hover:opacity-100 uppercase" href="#">Segurança</a>
+</div>
+</footer>
+<!-- Decorative Elements (HUD style) -->
+<div class="fixed top-24 left-8 pointer-events-none hidden xl:block">
+<div class="text-[10px] font-space-grotesk text-primary/40 uppercase tracking-[0.4em] [writing-mode:vertical-lr]">
+    PROTOCOLO NEON GLASS // CRIANDO IDENTIDADE...
+</div>
+</div>
+<div class="fixed bottom-32 right-8 pointer-events-none hidden xl:block text-right">
+<div class="text-[10px] font-space-grotesk text-primary/40 uppercase tracking-[0.2em] mb-2">COORD: 40.7128° N, 74.0060° W</div>
+<div class="text-[10px] font-space-grotesk text-primary/40 uppercase tracking-[0.2em]">REGISTRO: PENDENTE...</div>
+</div>
+
+<script>
+    // Toggle password visibility
+    function togglePassword(inputId, btn) {
+        const input = document.getElementById(inputId);
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.textContent = 'visibility_off';
+        } else {
+            input.type = 'password';
+            icon.textContent = 'visibility';
+        }
+    }
+
+    // Password strength calculator
+    function calcStrength(pw) {
+        let score = 0;
+        if (pw.length >= 8) score++;
+        if (pw.length >= 12) score++;
+        if (/[A-Z]/.test(pw)) score++;
+        if (/[0-9]/.test(pw)) score++;
+        if (/[^A-Za-z0-9]/.test(pw)) score++;
+        return score; // 0-5
+    }
+
+    const strengthConfig = [
+        { width: '0%',   color: '#757575', text: 'FORÇA DA CIFRA' },
+        { width: '20%',  color: '#ff716c', text: 'CRÍTICA' },
+        { width: '40%',  color: '#d7383b', text: 'FRACA' },
+        { width: '60%',  color: '#f59e0b', text: 'RAZOÁVEL' },
+        { width: '80%',  color: '#00deec', text: 'FORTE' },
+        { width: '100%', color: '#4ade80', text: 'BLINDADA' },
+    ];
+
+    const passwordInput = document.getElementById('password');
+    const passwordConfirmInput = document.getElementById('password-confirm');
+    const strengthBar = document.getElementById('password-strength-bar');
+    const strengthText = document.getElementById('password-strength-text');
+
+    passwordInput.addEventListener('input', function() {
+        const score = calcStrength(this.value);
+        const cfg = strengthConfig[score];
+        strengthBar.style.width = cfg.width;
+        strengthBar.style.backgroundColor = cfg.color;
+        strengthText.textContent = this.value.length > 0 ? cfg.text : 'FORÇA DA CIFRA';
+        strengthText.style.color = this.value.length > 0 ? cfg.color : '#757575';
+
+        // Validate min length
+        const errEl = document.getElementById('password-error');
+        const border = document.getElementById('password-border');
+        if (this.value.length > 0 && this.value.length < 8) {
+            errEl.classList.remove('hidden');
+            border.classList.add('error-state');
+            border.classList.remove('success-state');
+        } else if (this.value.length >= 8) {
+            errEl.classList.add('hidden');
+            border.classList.remove('error-state');
+            border.classList.add('success-state');
+        } else {
+            errEl.classList.add('hidden');
+            border.classList.remove('error-state');
+            border.classList.remove('success-state');
+        }
+
+        // Also re-check confirm match
+        checkPasswordMatch();
+    });
+
+    passwordConfirmInput.addEventListener('input', checkPasswordMatch);
+
+    function checkPasswordMatch() {
+        const pw = passwordInput.value;
+        const confirm = passwordConfirmInput.value;
+        const errEl = document.getElementById('password-confirm-error');
+        const border = document.getElementById('password-confirm-border');
+        if (confirm.length > 0 && pw !== confirm) {
+            errEl.classList.remove('hidden');
+            border.classList.add('error-state');
+            border.classList.remove('success-state');
+        } else if (confirm.length > 0 && pw === confirm) {
+            errEl.classList.add('hidden');
+            border.classList.remove('error-state');
+            border.classList.add('success-state');
+        } else {
+            errEl.classList.add('hidden');
+            border.classList.remove('error-state');
+            border.classList.remove('success-state');
+        }
+    }
+
+    // Phone mask (BR format)
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', function(e) {
+        let val = this.value.replace(/\D/g, '');
+        if (val.length > 11) val = val.substring(0, 11);
+        if (val.length > 6) {
+            this.value = '(' + val.substring(0,2) + ') ' + val.substring(2,7) + '-' + val.substring(7);
+        } else if (val.length > 2) {
+            this.value = '(' + val.substring(0,2) + ') ' + val.substring(2);
+        } else if (val.length > 0) {
+            this.value = '(' + val;
+        }
+    });
+
+    // E-mail real-time validation
+    const emailInput = document.getElementById('email');
+    emailInput.addEventListener('blur', function() {
+        const errEl = document.getElementById('email-error');
+        const border = document.getElementById('email-border');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (this.value.length > 0 && !emailRegex.test(this.value)) {
+            errEl.classList.remove('hidden');
+            border.classList.add('error-state');
+            border.classList.remove('success-state');
+        } else if (this.value.length > 0) {
+            errEl.classList.add('hidden');
+            border.classList.remove('error-state');
+            border.classList.add('success-state');
+        } else {
+            errEl.classList.add('hidden');
+            border.classList.remove('error-state');
+            border.classList.remove('success-state');
+        }
+    });
+
+    // Fullname validation
+    const fullnameInput = document.getElementById('fullname');
+    fullnameInput.addEventListener('blur', function() {
+        const errEl = document.getElementById('fullname-error');
+        const border = document.getElementById('fullname-border');
+        if (this.value.trim().length === 0) {
+            // Don't show error until submit
+        } else {
+            errEl.classList.add('hidden');
+            border.classList.remove('error-state');
+            border.classList.add('success-state');
+        }
+    });
+
+    // Step progress highlight
+    const section1Fields = [fullnameInput, emailInput, passwordInput, passwordConfirmInput];
+    const section2Fields = [document.getElementById('username'), phoneInput];
+
+    function updateStepIndicators() {
+        const step1Dot = document.getElementById('step-1-dot');
+        const step2Dot = document.getElementById('step-2-dot');
+        const step1Ind = document.getElementById('step-1-indicator');
+        const step2Ind = document.getElementById('step-2-indicator');
+
+        // Check if section 1 is complete
+        const s1Complete = fullnameInput.value.trim().length > 0
+            && emailInput.value.trim().length > 0
+            && passwordInput.value.length >= 8
+            && passwordConfirmInput.value === passwordInput.value
+            && passwordConfirmInput.value.length > 0;
+
+        if (s1Complete) {
+            step1Dot.classList.remove('border-primary', 'text-primary');
+            step1Dot.classList.add('bg-primary', 'text-black', 'border-primary');
+            step1Dot.classList.remove('step-active');
+            // Activate step 2
+            step2Dot.classList.remove('border-neutral-800', 'text-neutral-700');
+            step2Dot.classList.add('border-secondary', 'text-secondary', 'step-active');
+            step2Ind.querySelector('span:first-child').classList.remove('text-neutral-700');
+            step2Ind.querySelector('span:first-child').classList.add('text-secondary');
+        } else {
+            step1Dot.classList.add('border-primary', 'text-primary', 'step-active');
+            step1Dot.classList.remove('bg-primary', 'text-black');
+            step2Dot.classList.add('border-neutral-800', 'text-neutral-700');
+            step2Dot.classList.remove('border-secondary', 'text-secondary', 'step-active');
+            step2Ind.querySelector('span:first-child').classList.add('text-neutral-700');
+            step2Ind.querySelector('span:first-child').classList.remove('text-secondary');
+        }
+    }
+
+    [...section1Fields, ...section2Fields].forEach(f => {
+        f.addEventListener('input', updateStepIndicators);
+    });
+
+    // Form submission
+    document.getElementById('register-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let valid = true;
+
+        // Validate fullname
+        if (fullnameInput.value.trim().length === 0) {
+            document.getElementById('fullname-error').classList.remove('hidden');
+            document.getElementById('fullname-border').classList.add('error-state');
+            valid = false;
+        }
+
+        // Validate email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailInput.value)) {
+            document.getElementById('email-error').classList.remove('hidden');
+            document.getElementById('email-border').classList.add('error-state');
+            valid = false;
+        }
+
+        // Validate password
+        if (passwordInput.value.length < 8) {
+            document.getElementById('password-error').classList.remove('hidden');
+            document.getElementById('password-border').classList.add('error-state');
+            valid = false;
+        }
+
+        // Validate password match
+        if (passwordInput.value !== passwordConfirmInput.value || passwordConfirmInput.value.length === 0) {
+            document.getElementById('password-confirm-error').classList.remove('hidden');
+            document.getElementById('password-confirm-border').classList.add('error-state');
+            valid = false;
+        }
+
+        // Validate terms
+        if (!document.getElementById('terms').checked) {
+            document.getElementById('terms-error').classList.remove('hidden');
+            valid = false;
+        } else {
+            document.getElementById('terms-error').classList.add('hidden');
+        }
+
+        if (valid) {
+            const btn = document.getElementById('submit-btn');
+            btn.innerHTML = '<span class="material-symbols-outlined text-lg animate-spin">progress_activity</span><span>Processando...</span>';
+            btn.disabled = true;
+
+            // Simulate registration
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined text-lg">check_circle</span><span>Identidade Registrada</span>';
+                btn.classList.remove('from-primary', 'to-primary-container');
+                btn.classList.add('from-green-500', 'to-green-400');
+
+                // Redirect to login
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1500);
+            }, 2000);
+        }
+    });
+
+    // Terms checkbox clear error
+    document.getElementById('terms').addEventListener('change', function() {
+        if (this.checked) {
+            document.getElementById('terms-error').classList.add('hidden');
+        }
+    });
+</script>
+</body></html>

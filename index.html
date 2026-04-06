@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GAME BOY | PROTOCOLO NEON-GLASS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ff716c",
+                    "surface-bright": "#2c2c2c",
+                    "surface-variant": "#262626",
+                    "tertiary-dim": "#874cff",
+                    "primary-dim": "#00deec",
+                    "outline-variant": "#484848",
+                    "on-secondary-fixed": "#002593",
+                    "on-secondary": "#001662",
+                    "on-error": "#490006",
+                    "on-secondary-fixed-variant": "#003bd9",
+                    "surface-container-highest": "#262626",
+                    "primary": "#8ff5ff",
+                    "tertiary-fixed-dim": "#b190ff",
+                    "on-primary-container": "#005359",
+                    "inverse-primary": "#006a71",
+                    "on-primary-fixed": "#003f43",
+                    "secondary-fixed": "#c8cfff",
+                    "on-surface-variant": "#ababab",
+                    "error-dim": "#d7383b",
+                    "on-tertiary-fixed": "#1f0052",
+                    "on-tertiary": "#290067",
+                    "primary-fixed-dim": "#00deec",
+                    "on-primary-fixed-variant": "#005e64",
+                    "secondary-dim": "#4065ff",
+                    "outline": "#757575",
+                    "surface-container": "#191919",
+                    "tertiary-container": "#7000ff",
+                    "surface-container-lowest": "#000000",
+                    "secondary": "#8297ff",
+                    "error-container": "#9f0519",
+                    "surface-dim": "#0e0e0e",
+                    "background": "#0e0e0e",
+                    "surface-tint": "#8ff5ff",
+                    "surface-container-high": "#1f1f1f",
+                    "on-surface": "#ffffff",
+                    "inverse-surface": "#f9f9f9",
+                    "inverse-on-surface": "#555555",
+                    "tertiary": "#ac89ff",
+                    "on-tertiary-fixed-variant": "#4700a7",
+                    "on-tertiary-container": "#f8f1ff",
+                    "on-secondary-container": "#f9f6ff",
+                    "secondary-container": "#0046fa",
+                    "surface-container-low": "#131313",
+                    "on-error-container": "#ffa8a3",
+                    "primary-container": "#00eefc",
+                    "on-background": "#ffffff",
+                    "surface": "#0e0e0e",
+                    "secondary-fixed-dim": "#b5c0ff",
+                    "primary-fixed": "#00eefc",
+                    "tertiary-fixed": "#bda1ff",
+                    "on-primary": "#005d63"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Manrope"],
+                    "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-text {
+            text-shadow: 0 0 20px rgba(143, 245, 255, 0.4);
+        }
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(143, 245, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(143, 245, 255, 0.05) 1px, transparent 1px);
+        }
+        .glass-panel {
+            background: rgba(31, 31, 31, 0.4);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 z-50 flex justify-between items-center w-full px-8 py-4 bg-black/40 backdrop-blur-xl">
+<a href="index.html" class="text-2xl font-bold tracking-tighter text-cyan-400 drop-shadow-[0_0_8px_rgba(143,245,255,0.4)] font-headline">
+            GAME BOY
+        </a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-space-grotesk tracking-tight text-cyan-400 border-b-2 border-cyan-400 pb-1 hover:text-cyan-200 transition-colors" href="index.html">Inicio</a>
+<a class="font-space-grotesk tracking-tight text-neutral-500 hover:text-cyan-200 transition-colors" href="galeria.html">Jogos</a>
+<a class="font-space-grotesk tracking-tight text-neutral-500 hover:text-cyan-200 transition-colors" href="#">Torneios</a>
+<a class="font-space-grotesk tracking-tight text-neutral-500 hover:text-cyan-200 transition-colors" href="#">Comunidade</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-neutral-500 cursor-pointer hover:text-cyan-400 transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-neutral-500 cursor-pointer hover:text-cyan-400 transition-colors" data-icon="settings">settings</span>
+</div>
+<button onclick="window.location.href='login.html'" class="bg-primary hover:bg-primary-container text-on-primary px-6 py-2 font-headline font-bold uppercase text-sm tracking-widest transition-transform duration-150 scale-100 hover:scale-105 active:scale-95">
+                Iniciar
+            </button>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-16 md:w-64 flex flex-col bg-neutral-950 border-r border-neutral-800/30 hidden lg:flex z-40 pt-24">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-highest border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="person">person</span>
+</div>
+<div class="hidden md:block">
+<p class="font-headline uppercase text-xs text-primary font-bold tracking-widest">OPERADOR_01</p>
+<p class="text-[10px] text-neutral-500 tracking-tighter">STATUS: ONLINE</p>
+</div>
+</div>
+</div>
+<nav class="flex-grow">
+<div class="space-y-1">
+<a class="flex items-center gap-4 px-6 py-4 text-cyan-400 bg-neutral-900 border-r-4 border-cyan-400 font-headline uppercase text-xs tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="hidden md:inline">Painel</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-neutral-600 hover:bg-neutral-900 hover:text-cyan-300 transition-all duration-200 ease-out font-headline uppercase text-xs tracking-widest" href="galeria.html">
+<span class="material-symbols-outlined" data-icon="sports_esports">sports_esports</span>
+<span class="hidden md:inline">Biblioteca</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-neutral-600 hover:bg-neutral-900 hover:text-cyan-300 transition-all duration-200 ease-out font-headline uppercase text-xs tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="hidden md:inline">Amigos</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-neutral-600 hover:bg-neutral-900 hover:text-cyan-300 transition-all duration-200 ease-out font-headline uppercase text-xs tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+<span class="hidden md:inline">Conquistas</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-neutral-600 hover:bg-neutral-900 hover:text-cyan-300 transition-all duration-200 ease-out font-headline uppercase text-xs tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="hidden md:inline">Carteira</span>
+</a>
+</div>
+</nav>
+<div class="p-4 border-t border-neutral-900">
+<a class="flex items-center gap-4 px-4 py-3 text-neutral-600 hover:text-white font-headline uppercase text-[10px] tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help_center">help_center</span>
+<span class="hidden md:inline">Suporte</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-neutral-600 hover:text-error font-headline uppercase text-[10px] tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+<span class="hidden md:inline">Sair</span>
+</a>
+</div>
+</aside>
+<main class="lg:ml-64 pt-20">
+<!-- Hero Section -->
+<section class="relative h-[870px] flex items-center px-8 md:px-16 overflow-hidden bg-grid">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent pointer-events-none"></div>
+<div class="relative z-10 max-w-4xl">
+<div class="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-surface-container-high border border-primary/20">
+<span class="w-2 h-2 bg-primary animate-pulse"></span>
+<span class="font-headline text-[10px] uppercase tracking-[0.2em] text-primary">Sistema Online: v.4.0.2-NEON</span>
+</div>
+<h1 class="font-headline text-6xl md:text-9xl font-bold tracking-tighter leading-none mb-6 text-on-background glow-text">
+                    ARQUIVO DA<br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">PRÓXIMA GERAÇÃO</span>
+</h1>
+<p class="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl mb-10 leading-relaxed">
+                    O Arquivo Cinético é uma interface de alta fidelidade para o operador de elite. Acesse o protocolo de jogo neural mais avançado já sintetizado. Cantos rígidos. Vácuo elevado. Latência zero.
+                </p>
+<div class="flex flex-wrap gap-6">
+<button onclick="window.location.href='login.html'" class="px-10 py-5 bg-gradient-to-br from-primary to-primary-container text-black font-headline font-bold uppercase tracking-widest shadow-[0_0_40px_rgba(143,245,255,0.25)] hover:shadow-[0_0_60px_rgba(143,245,255,0.4)] transition-all">
+                        Lançar Terminal
+                    </button>
+<button class="px-10 py-5 border border-primary/30 text-primary font-headline font-bold uppercase tracking-widest glass-panel hover:bg-primary/5 transition-all">
+                        Ver Banco de Dados
+                    </button>
+</div>
+</div>
+<!-- Asymmetric Floating Data Block -->
+<div class="absolute right-16 top-1/2 -translate-y-1/2 hidden xl:block w-80">
+<div class="glass-panel p-8 space-y-8 border-l-4 border-primary">
+<div>
+<p class="font-headline text-[10px] uppercase tracking-widest text-neutral-500 mb-2">Latência de Rede</p>
+<p class="font-headline text-3xl font-bold text-primary tracking-tighter">0.002<span class="text-xs ml-1">ms</span></p>
+</div>
+<div class="w-full h-[2px] bg-neutral-800">
+<div class="w-2/3 h-full bg-primary shadow-[0_0_10px_#8ff5ff]"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="font-headline text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Núcleos</p>
+<p class="font-headline font-bold text-on-background">SYN-64</p>
+</div>
+<div>
+<p class="font-headline text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Status</p>
+<p class="font-headline font-bold text-primary">CRIPTOGRAFADO</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Bento Grid -->
+<section class="py-24 px-8 md:px-16 bg-surface-container-low">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="font-headline text-4xl font-bold tracking-tight mb-2 uppercase">Feed do Protocolo</h2>
+<p class="text-neutral-500 uppercase font-headline text-xs tracking-widest">Nodes ativos na rede</p>
+</div>
+<div class="text-primary text-sm font-headline tracking-widest border-b border-primary/20 pb-1 cursor-pointer hover:border-primary">VER TODOS OS NODES</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-[800px]">
+<!-- Large Featured Card -->
+<div class="md:col-span-8 bg-surface-container relative overflow-hidden group cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="Futuristic esports arena with neon glowing lines and holographic displays in a dark cinematic environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBfSmvt_z-5IFRSBNFhDXqfWC9sIZRxrRZVtRl1rTsQcpG8BF3Rdqtszq8W--vZtAnYMvottUgo5LVMqEP44G8NZyVQK4yd5rUQMqJK1JRV6V8h-GA5oGDhqV1GGgo3VILCvZ0lisWGtnR6LoVsHiQzVmDk2NBjCQtpArxhyjS3H2ZpkRo-_P0Cm1Oet9hikDv0B7fB1cqKXdpMYD6pdZcI1Sb0ImU2kDq62RuV9Y-OWt8gEbFVk0wILmLuOORQiLr7CLy4DtxQM2O"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute bottom-12 left-12 right-12">
+<div class="bg-primary/20 backdrop-blur-md px-3 py-1 inline-block mb-4">
+<span class="font-headline text-[10px] uppercase tracking-widest text-primary">Torneios em Destaque</span>
+</div>
+<h3 class="font-headline text-5xl font-bold tracking-tighter mb-4">LIGA NEON: TEMPORADA ZERO</h3>
+<p class="text-on-surface-variant max-w-xl font-body">O teste definitivo de resposta sináptica. Competição de alto nível para os operadores mais disciplinados do mundo.</p>
+</div>
+</div>
+<!-- Secondary Cards Stack -->
+<div class="md:col-span-4 grid grid-rows-2 gap-6">
+<div class="bg-surface-container-high p-8 flex flex-col justify-between border-t border-primary/30">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="database">database</span>
+<span class="text-neutral-500 font-headline text-xs tracking-tighter">REF: 88-X</span>
+</div>
+<div>
+<h4 class="font-headline text-xl font-bold mb-2 uppercase">Biblioteca Neural</h4>
+<p class="text-neutral-500 text-sm">Acesse mais de 4.000 títulos otimizados com compressão de camada zero.</p>
+</div>
+</div>
+<div class="bg-surface-container-high relative overflow-hidden group cursor-pointer border-t border-secondary/30">
+<img class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-700" data-alt="Abstract vibrant blue and violet energy waves flowing against a deep black background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnhvpLSAWSLdbs7CH_-jrrTghCGj--Q4_NjMefDSpYapfmrGYJRLhrrm8jMydElnLRtSZgjqGQCbrs532cEVJjhUPnHAPtiCVzCjhsGXwKNp7t0AlEYnqchSbRcampH2tsd1fbbp5qTA4-k7OE64hF1w9Mfzk9uAfttMqfmRuhOk6Sr2Ou20XSAv7ZxrQIw0-VOJrBm6Pt-uReDmqIfd_Tzo_TkiXYjEv9ZYa2Kw8_O6FB8xbaozGOXID3x5syXPY7SVx4zejHmV0J"/>
+<div class="absolute inset-0 p-8 flex flex-col justify-end">
+<h4 class="font-headline text-xl font-bold mb-2 uppercase">Eventos da Rede</h4>
+<p class="text-neutral-500 text-sm">A transmissão ao vivo do Qualificatório Cinético já está ativa.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section (Asymmetric) -->
+<section class="py-32 px-8 md:px-16 flex flex-col md:flex-row gap-12 items-center">
+<div class="md:w-1/2">
+<div class="grid grid-cols-2 gap-1 px-1 bg-neutral-900 border border-neutral-800">
+<div class="bg-background p-12 text-center">
+<p class="font-headline text-4xl font-bold text-primary mb-2">12M+</p>
+<p class="font-headline text-[10px] uppercase tracking-widest text-neutral-500">Operadores Ativos</p>
+</div>
+<div class="bg-background p-12 text-center">
+<p class="font-headline text-4xl font-bold text-secondary mb-2">99.9%</p>
+<p class="font-headline text-[10px] uppercase tracking-widest text-neutral-500">Protocolo de Uptime</p>
+</div>
+<div class="bg-background p-12 text-center">
+<p class="font-headline text-4xl font-bold text-tertiary mb-2">48TB</p>
+<p class="font-headline text-[10px] uppercase tracking-widest text-neutral-500">Capacidade de Sincronia</p>
+</div>
+<div class="bg-background p-12 text-center">
+<p class="font-headline text-4xl font-bold text-primary-container mb-2">0.1s</p>
+<p class="font-headline text-[10px] uppercase tracking-widest text-neutral-500">Latência de Autenticação</p>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 md:pl-16">
+<h2 class="font-headline text-5xl font-bold tracking-tighter mb-8 uppercase leading-tight">PRECISÃO ATRAVÉS DE <br/><span class="text-primary glow-text">TECNOLOGIA</span> SUPERIOR</h2>
+<p class="text-on-surface-variant font-body text-lg mb-8 leading-relaxed">
+                    Nossa infraestrutura é baseada no Protocolo Neon-Glass. Ao remover as abstrações dos sistemas web legados, fornecemos uma conexão bruta e direta entre a intenção do usuário e a execução digital.
+                </p>
+<div class="space-y-4">
+<div class="flex items-center gap-4 text-neutral-400">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-headline uppercase text-xs tracking-widest">Criptografia Neural de Ponta a Ponta</span>
+</div>
+<div class="flex items-center gap-4 text-neutral-400">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-headline uppercase text-xs tracking-widest">Arquitetura de Dados Assimétrica</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-8 md:px-16 text-center">
+<div class="max-w-4xl mx-auto glass-panel p-20 border border-primary/10 relative overflow-hidden">
+<div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/10 blur-[100px]"></div>
+<div class="absolute -bottom-24 -right-24 w-64 h-64 bg-secondary/10 blur-[100px]"></div>
+<h2 class="font-headline text-5xl font-bold tracking-tight mb-6 uppercase">Pronto para Iniciar?</h2>
+<p class="text-neutral-400 mb-12 max-w-xl mx-auto">Conecte sua interface neural e junte-se ao protocolo. O arquivo aguarda sua contribuição.</p>
+<div class="flex justify-center gap-6">
+<button onclick="window.location.href='login.html'" class="bg-primary text-black font-headline font-bold uppercase tracking-widest px-12 py-4 shadow-[0_0_30px_rgba(143,245,255,0.3)]">Estabelecer Conexão</button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center bg-black border-t border-neutral-900">
+<div class="mb-8 md:mb-0">
+<span class="text-cyan-400 font-bold font-headline tracking-tighter text-xl">GAME BOY</span>
+<p class="font-manrope text-[10px] tracking-widest text-neutral-600 mt-2 uppercase">© 2024 PROTOCOLO NEON-GLASS. TODOS OS DIREITOS RESERVADOS.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-manrope text-xs tracking-widest text-neutral-700 hover:text-white transition-colors uppercase" href="#">Termos de Serviço</a>
+<a class="font-manrope text-xs tracking-widest text-neutral-700 hover:text-white transition-colors uppercase" href="#">Política de Privacidade</a>
+<a class="font-manrope text-xs tracking-widest text-neutral-700 hover:text-white transition-colors uppercase" href="#">Segurança</a>
+<a class="font-manrope text-xs tracking-widest text-neutral-700 hover:text-white transition-colors uppercase" href="#">API</a>
+<a class="font-manrope text-xs tracking-widest text-neutral-700 hover:text-white transition-colors uppercase" href="#">Status</a>
+</div>
+<div class="mt-8 md:mt-0 flex gap-6">
+<span class="material-symbols-outlined text-neutral-700 hover:text-primary cursor-pointer transition-colors" data-icon="hub">hub</span>
+<span class="material-symbols-outlined text-neutral-700 hover:text-primary cursor-pointer transition-colors" data-icon="terminal">terminal</span>
+</div>
+</footer>
+</main>
+</body></html>

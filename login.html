@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GAME BOY | INITIALIZE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ff716c",
+                        "surface-bright": "#2c2c2c",
+                        "surface-variant": "#262626",
+                        "tertiary-dim": "#874cff",
+                        "primary-dim": "#00deec",
+                        "outline-variant": "#484848",
+                        "on-secondary-fixed": "#002593",
+                        "on-secondary": "#001662",
+                        "on-error": "#490006",
+                        "on-secondary-fixed-variant": "#003bd9",
+                        "surface-container-highest": "#262626",
+                        "primary": "#8ff5ff",
+                        "tertiary-fixed-dim": "#b190ff",
+                        "on-primary-container": "#005359",
+                        "inverse-primary": "#006a71",
+                        "on-primary-fixed": "#003f43",
+                        "secondary-fixed": "#c8cfff",
+                        "on-surface-variant": "#ababab",
+                        "error-dim": "#d7383b",
+                        "on-tertiary-fixed": "#1f0052",
+                        "on-tertiary": "#290067",
+                        "primary-fixed-dim": "#00deec",
+                        "on-primary-fixed-variant": "#005e64",
+                        "secondary-dim": "#4065ff",
+                        "outline": "#757575",
+                        "surface-container": "#191919",
+                        "tertiary-container": "#7000ff",
+                        "surface-container-lowest": "#000000",
+                        "secondary": "#8297ff",
+                        "error-container": "#9f0519",
+                        "surface-dim": "#0e0e0e",
+                        "background": "#0e0e0e",
+                        "surface-tint": "#8ff5ff",
+                        "surface-container-high": "#1f1f1f",
+                        "on-surface": "#ffffff",
+                        "inverse-surface": "#f9f9f9",
+                        "inverse-on-surface": "#555555",
+                        "tertiary": "#ac89ff",
+                        "on-tertiary-fixed-variant": "#4700a7",
+                        "on-tertiary-container": "#f8f1ff",
+                        "on-secondary-container": "#f9f6ff",
+                        "secondary-container": "#0046fa",
+                        "surface-container-low": "#131313",
+                        "on-error-container": "#ffa8a3",
+                        "primary-container": "#00eefc",
+                        "on-background": "#ffffff",
+                        "surface": "#0e0e0e",
+                        "secondary-fixed-dim": "#b5c0ff",
+                        "primary-fixed": "#00eefc",
+                        "tertiary-fixed": "#bda1ff",
+                        "on-primary": "#005d63"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+        }
+        .font-space-grotesk { font-family: 'Space Grotesk', sans-serif; }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        
+        .neon-glow-primary {
+            text-shadow: 0 0 10px rgba(143, 245, 255, 0.4);
+        }
+        
+        .glass-panel {
+            background: rgba(31, 31, 31, 0.4);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+
+        .kinetic-border {
+            position: relative;
+            background: #131313;
+        }
+
+        .kinetic-border::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(135deg, #8ff5ff 0%, #00eefc 100%);
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .kinetic-border:focus-within::after {
+            opacity: 1;
+            box-shadow: 0 0 15px rgba(143, 245, 255, 0.5);
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0e0e0e;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #262626;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="bg-black/40 backdrop-blur-xl flex justify-between items-center w-full px-8 py-6 z-50">
+<a href="index.html" class="text-2xl font-bold tracking-tighter text-cyan-400 drop-shadow-[0_0_8px_rgba(143,245,255,0.4)] font-space-grotesk">
+        GAME BOY
+    </a>
+<div class="flex items-center gap-8">
+<span class="font-space-grotesk uppercase text-[10px] tracking-[0.2em] text-neutral-500">Status do Sistema: Estável</span>
+<div class="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_8px_#8ff5ff]"></div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center relative px-6 py-12 overflow-hidden">
+<!-- Abstract Background Element -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[1228px] opacity-10 pointer-events-none">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent"></div>
+</div>
+<div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch z-10">
+<!-- Left Side: Aesthetic/Identity -->
+<div class="hidden lg:flex lg:col-span-7 flex-col justify-between p-12 bg-surface-container-low">
+<div>
+<h1 class="font-headline text-7xl font-bold tracking-tighter text-white leading-none mb-6 neon-glow-primary uppercase">
+                    Acesso ao<br/>Arquivo.
+                </h1>
+<div class="h-1 w-24 bg-gradient-to-r from-primary to-transparent mb-12"></div>
+<p class="font-body text-neutral-400 max-w-md text-lg leading-relaxed">
+                    Entre no Arquivo Cinético. Um terminal de alta fidelidade para a próxima geração de jogos competitivos e descoberta digital.
+                </p>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 group">
+<div class="w-8 h-[1px] bg-primary group-hover:w-12 transition-all"></div>
+<span class="font-label text-[10px] tracking-widest text-primary uppercase">Protocolo V.8.0.42</span>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-8 h-[1px] bg-neutral-800 group-hover:w-12 transition-all"></div>
+<span class="font-label text-[10px] tracking-widest text-neutral-600 uppercase">Link Neural Criptografado</span>
+</div>
+</div>
+</div>
+<!-- Right Side: Dual Form (Asymmetric Layout) -->
+<div class="lg:col-span-5 bg-black p-8 lg:p-16 flex flex-col justify-center relative">
+<!-- Tab Toggle -->
+<div class="flex gap-8 mb-12 border-b border-neutral-900">
+<button class="pb-4 font-headline text-sm font-bold tracking-widest text-primary border-b-2 border-primary uppercase">
+                    Entrar
+                </button>
+<a href="cadastro.html" class="pb-4 font-headline text-sm font-bold tracking-widest text-neutral-700 hover:text-neutral-400 transition-colors uppercase">
+                    Criar Identidade
+                </a>
+</div>
+<!-- Form Content -->
+<div class="space-y-8">
+<div>
+<label class="font-label text-[10px] tracking-[0.2em] text-neutral-500 uppercase block mb-3">Identificador do Operador</label>
+<div class="kinetic-border">
+<input class="w-full bg-transparent border-none py-4 px-4 text-white font-manrope placeholder:text-neutral-700" placeholder="NOME_DE_USUÁRIO / E-MAIL" type="text"/>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-3">
+<label class="font-label text-[10px] tracking-[0.2em] text-neutral-500 uppercase block">Cifra de Segurança</label>
+<a class="font-label text-[10px] tracking-widest text-primary/60 hover:text-primary transition-colors uppercase" href="#">Perdeu as credenciais?</a>
+</div>
+<div class="kinetic-border">
+<input class="w-full bg-transparent border-none py-4 px-4 text-white font-manrope placeholder:text-neutral-700" placeholder="••••••••••••" type="password"/>
+</div>
+</div>
+<div class="flex items-center gap-3 py-2">
+<input class="w-4 h-4 bg-neutral-900 border-neutral-800 text-primary focus:ring-0 rounded-none" id="remember" type="checkbox"/>
+<label class="font-label text-[10px] tracking-widest text-neutral-400 uppercase cursor-pointer" for="remember">Manter Sessão</label>
+</div>
+<div class="pt-4 space-y-4">
+<button onclick="window.location.href='index.html'" class="w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold tracking-widest uppercase text-sm hover:brightness-110 transition-all shadow-[0_0_20px_rgba(143,245,255,0.2)]">
+                        Iniciar Conexão
+                    </button>
+<div class="relative py-4 flex items-center">
+<div class="flex-grow border-t border-neutral-900"></div>
+<span class="flex-shrink mx-4 font-label text-[9px] text-neutral-700 tracking-tighter uppercase">Sobreposição Externa</span>
+<div class="flex-grow border-t border-neutral-900"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="py-4 border border-neutral-900 hover:bg-neutral-900 transition-colors flex items-center justify-center gap-2">
+<span class="font-label text-[10px] tracking-widest text-white uppercase">NeuralNet</span>
+</button>
+<button class="py-4 border border-neutral-900 hover:bg-neutral-900 transition-colors flex items-center justify-center gap-2">
+<span class="font-label text-[10px] tracking-widest text-white uppercase">Pulse</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Meta -->
+<div class="mt-16 pt-8 border-t border-neutral-950 flex flex-col gap-2">
+<p class="font-label text-[9px] tracking-widest text-neutral-600 uppercase">Aviso: Acesso não identificado é monitorado.</p>
+<p class="font-label text-[9px] tracking-widest text-neutral-600 uppercase">Localização: Sector_04 / US_East</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Shared Footer -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center bg-black border-t border-neutral-900">
+<div class="text-cyan-400 font-bold font-manrope text-xs tracking-widest mb-6 md:mb-0 uppercase">
+        © 2024 PROTOCOLO NEON-GLASS. TODOS OS DIREITOS RESERVADOS.
+    </div>
+<div class="flex gap-8">
+<a class="font-manrope text-xs tracking-widest text-neutral-700 hover:text-white transition-opacity opacity-80 hover:opacity-100 uppercase" href="#">Termos de Serviço</a>
+<a class="font-manrope text-xs tracking-widest text-neutral-700 hover:text-white transition-opacity opacity-80 hover:opacity-100 uppercase" href="#">Política de Privacidade</a>
+<a class="font-manrope text-xs tracking-widest text-neutral-700 hover:text-white transition-opacity opacity-80 hover:opacity-100 uppercase" href="#">Segurança</a>
+</div>
+</footer>
+<!-- Decorative Elements (HUD style) -->
+<div class="fixed top-24 left-8 pointer-events-none hidden xl:block">
+<div class="text-[10px] font-space-grotesk text-primary/40 uppercase tracking-[0.4em] [writing-mode:vertical-lr]">
+        PROTOCOLO NEON GLASS // ACESSANDO NÚCLEO...
+    </div>
+</div>
+<div class="fixed bottom-32 right-8 pointer-events-none hidden xl:block text-right">
+<div class="text-[10px] font-space-grotesk text-primary/40 uppercase tracking-[0.2em] mb-2">COORD: 40.7128° N, 74.0060° W</div>
+<div class="text-[10px] font-space-grotesk text-primary/40 uppercase tracking-[0.2em]">PERDA DE PACOTE: 0.0003%</div>
+</div>
+</body></html>
